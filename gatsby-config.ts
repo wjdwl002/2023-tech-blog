@@ -1,31 +1,32 @@
-import type { GatsbyConfig } from "gatsby";
-const path = require('path');
+import type { GatsbyConfig } from 'gatsby'
+import path from 'path'
+
 const gatsbyRequiredRules = path.join(
   process.cwd(),
-  "node_modules",
-  "gatsby",
-  "dist",
-  "utils",
-  "eslint-rules"
-);
+  'node_modules',
+  'gatsby',
+  'dist',
+  'utils',
+  'eslint-rules'
+)
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `esthevely`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: 'esthevely',
+    siteUrl: 'https://www.yourdomain.tld',
     menuLinks: [
       {
-        "name": "ABOUT ME",
-        "link": "/"
+        name: 'ABOUT ME',
+        link: '/'
       },
       {
-        "name": "PROJECTS",
-        "link": "projects",
+        name: 'PROJECTS',
+        link: 'projects'
       },
       {
-        "name": "POSTS",
-        "link": "/posts"
-      },
+        name: 'POSTS',
+        link: '/posts'
+      }
     ]
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -33,42 +34,41 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-    "gatsby-source-fontawesome",
-    "gatsby-plugin-sass",
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-sass',
     {
-      resolve: `gatsby-plugin-emotion`,
+      resolve: 'gatsby-plugin-emotion',
       options: {
         sourceMap: true,
-        autoLabel: "dev-only",
-        labelFormat: `[local]`,
-        cssPropOptimization: true,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-alias-imports`,
-      options: {
-        alias: {
-          "@": path.resolve(__dirname, "src")
-        },
-        extensions: ["tsx", "scss", "ts", "js"]
+        autoLabel: 'dev-only',
+        labelFormat: '[local]',
+        cssPropOptimization: true
       }
     },
     {
-      resolve: "gatsby-plugin-eslint",
+      resolve: 'gatsby-plugin-alias-imports',
+      options: {
+        alias: {
+          '@': path.resolve(__dirname, 'src')
+        },
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-eslint',
       options: {
         // Gatsby required rules directory
         rulePaths: [gatsbyRequiredRules],
         // Default settings that may be omitted or customized
-        stages: ["develop"],
-        extensions: ["js", "jsx", "ts", "tsx"],
-        exclude: ["node_modules", "bower_components", ".cache", "public"],
+        stages: ['develop'],
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+        exclude: ['node_modules', 'bower_components', '.cache', 'public']
         // Any additional eslint-webpack-plugin options below
         // ...
-      },
-    },
-  ],
-};
+      }
+    }
+  ]
+}
 
-export default config;
+export default config

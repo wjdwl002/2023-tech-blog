@@ -11,14 +11,16 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
+    project: ['./tsconfig.json']
   },
   plugins: [
     'react'
   ],
   rules: {
-    "no-anonymous-exports-page-templates": "warn",
-    "limited-exports-page-templates": "warn",
-    "import/extensions": "off"
+    // 'no-anonymous-exports-page-templates': 'warn',
+    // 'limited-exports-page-templates': 'warn',
+    '@typescript-eslint/ban-tsx-comment': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off'
   }
 }
