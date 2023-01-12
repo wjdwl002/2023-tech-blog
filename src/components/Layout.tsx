@@ -9,6 +9,7 @@ const FlexDiv = styled.div([
 ])
 
 const SideBarDiv = styled.div([
+  tw`fixed`,
   'width: 100px'
 ])
 

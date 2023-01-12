@@ -7,16 +7,8 @@ import tw from 'twin.macro'
 
 const Gradient = styled.div([
   tw`
-  w-full h-[100vh]
+  w-full h-[100vh] ml-[100px]
   flex justify-center items-center p-0 m-0`
-])
-
-const Hr = styled.hr([
-  tw`
-  w-[60%] absolute top-[70px] left-[120px]
-  border-white border-[1px] opacity-50
-  z-1
-  `
 ])
 
 const MainDiv = styled.div([
@@ -29,7 +21,6 @@ const MainDiv = styled.div([
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-    <Hr/>
       <Gradient className='gradient'>
         <MainDiv>
           I AM A ..

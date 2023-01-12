@@ -8,7 +8,7 @@ const NavDiv = styled.div([
   tw`
     h-[140px] bg-transparent
     absolute flex justify-between
-    mx-[30px]
+    mr-[30px] ml-[100px]
     `,
   'width: -webkit-fill-available;'
 
@@ -19,9 +19,19 @@ const FlexDiv = styled.div([
 ])
 
 const MenuBtn = styled.button([
-  tw`bg-transparent border-none text-white text-[16px] font-bold`
+  tw`
+  w-fit
+  bg-transparent border-none 
+  text-white text-[16px] font-bold whitespace-pre`
 ])
 
+const Hr = styled.hr([
+  tw`
+    w-[calc(100vw - 450px)] absolute top-[30px]
+    border-white border-[1px] opacity-50
+    z-1
+    `
+])
 export interface NavBarProps {
   height: string
 }
@@ -46,7 +56,8 @@ const NavBar = ({ height }: NavBarProps) => {
   const { menuLinks } = data.site.siteMetadata
 
   return (<NavDiv style={{ height }}>
-        <FlexDiv>
+        <FlexDiv style={{ width: '-webkit-fill-available' }}>
+            <Hr/>
         </FlexDiv>
         <FlexDiv>
             {menuLinks.map((e: IMenuLink) => (<MenuBtn key={e?.name}>
