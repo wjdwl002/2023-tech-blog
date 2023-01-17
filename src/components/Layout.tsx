@@ -3,6 +3,7 @@ import NavBar from '@/components/NavBar.tsx'
 import SideBar from '@/components/SideBar.tsx'
 import styled from '@emotion/styled'
 import tw from 'twin.macro'
+import { ThemeProvider } from '@/context/ThemeContext.tsx'
 
 const FlexDiv = styled.div([
   tw`flex`
@@ -18,11 +19,12 @@ const ContentDiv = styled.div([
 ])
 export interface LayoutProps {
   children: React.ReactNode
+  index: boolean
 }
 
-const Layout = ({ children }: LayoutProps) => {
-  return (<div>
-        <NavBar height="80px"></NavBar>
+const Layout = ({ children, index }: LayoutProps) => {
+  return (<ThemeProvider>
+        <NavBar height="80px" index={index}></NavBar>
         <FlexDiv>
             <SideBarDiv>
                 <SideBar></SideBar>
@@ -32,7 +34,7 @@ const Layout = ({ children }: LayoutProps) => {
 
             </ContentDiv>
         </FlexDiv>
-    </div>)
+    </ThemeProvider>)
 }
 
 export default Layout

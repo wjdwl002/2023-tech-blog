@@ -8,7 +8,8 @@ const SideDiv = styled.div([
   tw`
     w-full h-[100vh] bg-white z-10
     flex flex-col justify-end
-    `
+    `,
+  { boxShadow: '10px 10px 20px 10px rgba(0,0,0,0.05)' }
 ])
 
 const FlexDiv = styled.div([

@@ -7,8 +7,17 @@ body{
     margin: 0px;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+  &:hover{
+    color: #ffe8fd;
+    transition: color 0.2s;
+  }
+}
+
 .gradient{
-    background: linear-gradient(-45deg, #F4E2D8, #BA5370, #9796f0, #23d5ab);
+    background: linear-gradient(-45deg, #fffaf8, #BA5370, #9796f0, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }

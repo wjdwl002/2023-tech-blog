@@ -20,13 +20,13 @@ const MainDiv = styled.div([
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <Layout>
-      <Gradient className='gradient'>
-        <MainDiv>
-          I AM A ..
-        </MainDiv>
-      </Gradient>
-    </Layout>
+      <Layout index={true}>
+        <Gradient className='gradient'>
+          <MainDiv>
+            I AM A ..
+          </MainDiv>
+        </Gradient>
+      </Layout>
   )
 }
 
