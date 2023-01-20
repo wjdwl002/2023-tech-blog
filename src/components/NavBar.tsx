@@ -6,6 +6,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { useTheme } from '@/context/ThemeContext'
 import { IThemeType } from '../context/ThemeContext'
 import { useLocation } from '@reach/router'
+import { useEffect } from 'react'
 
 export interface NavBarProps {
   height: string
@@ -17,9 +18,21 @@ interface IMenuLink {
   link: string
 }
 
-const NavBar = ({ height, index = false }: NavBarProps) => {
+const NavBar = ({ height }: NavBarProps) => {
   const theme = useTheme()
   const location = useLocation()
+
+  const [index, setIndex] = React.useState(false)
+
+  useEffect(() => {
+    setIndex(location.pathname === '/')
+  }, [location])
+
+  const setMenuBtnColor = (link: string) => {
+    return location.pathname.slice(0, -1) === link
+      ? theme.themeColorset.pointColor
+      : index ? 'white' : theme.themeColorset.textColor
+  }
 
   const data = useStaticQuery(graphql`
     query {
@@ -40,11 +53,14 @@ const NavBar = ({ height, index = false }: NavBarProps) => {
       theme={theme}
       style={{ height }}>
         <FlexDiv style={{ width: '-webkit-fill-available' }}>
-            <Hr style={{ display: index ? 'relative' : 'none' }}/>
+            {/* <Hr style={{ display: index ? 'relative' : 'none' }}/> */}
         </FlexDiv>
         <FlexDiv>
             {menuLinks.map((e: IMenuLink) => (
-                <MenuBtn key={e?.name} theme={theme} style={{ color: location.pathname.slice(0, -1) === e.link ? theme.themeColorset.pointColor : theme.themeColorset.textColor }}>
+                <MenuBtn key={e?.name}
+                  theme={theme}
+                  index={index}
+                  style={{ color: setMenuBtnColor(e.link) }}>
                   <a href={e?.link}>
                   {e?.name}
                   </a>
@@ -79,14 +95,13 @@ const MenuBtn = styled.button((props: { theme: IThemeType }) => [
   tw`
   w-fit
   bg-transparent border-none 
-  text-[16px] font-bold whitespace-pre`,
-  { color: props.theme.themeColorset.textColor }
+  text-[16px] font-bold whitespace-pre`
 ])
 
-const Hr = styled.hr([
-  tw`
-    w-[calc(100vw - 450px)] absolute top-[30px]
-    border-white border-[1px] opacity-50
-    z-1
-    `
-])
+// const Hr = styled.hr([
+//   tw`
+//     w-[calc(100vw - 450px)] absolute top-[30px]
+//     border-white border-[1px] opacity-50
+//     z-1
+//     `
+// ])

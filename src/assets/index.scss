@@ -1,3 +1,10 @@
+$--comm-point: #BA5370;
+$--light-base: #ffffff;
+$--light-text: #242424;
+$--light-subText: #8fa2ff;
+$--dark-base: #1E1F21;
+$--dark-text: #e8eaed;
+
 html{
     min-width: 1200px !important;
     overflow-x: auto;
@@ -9,13 +16,19 @@ body{
 
 .dark{
   a:hover{
-    color: #BA5370 !important;
+    color: var($--comm-point) !important;
+  }
+  section{
+    background-color: $--dark-base;
   }
 }
 
 .light{
   a:hover{
-    color: #BA5370;
+    color: var($--comm-point);
+  }
+  section{
+    background-color: $--light-base;
   }
 }
 

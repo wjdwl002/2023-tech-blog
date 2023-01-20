@@ -40,6 +40,6 @@ const SideBarDiv = styled.div([
   'width: 100px'
 ])
 
-const ContentDiv = styled.div((props) => [
+const ContentDiv = styled.section([
   tw`w-full h-[100vh]`
 ])
