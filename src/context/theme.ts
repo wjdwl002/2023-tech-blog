@@ -1,6 +1,6 @@
 
 const commonTheme = {
-  pointColor: '#5772F5'
+  pointColor: '#BA5370'
 }
 
 export const lightTheme = {

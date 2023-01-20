@@ -5,6 +5,7 @@ import tw from 'twin.macro'
 import { useStaticQuery, graphql } from 'gatsby'
 import { useTheme } from '@/context/ThemeContext'
 import { IThemeType } from '../context/ThemeContext'
+import { useLocation } from '@reach/router'
 
 export interface NavBarProps {
   height: string
@@ -18,8 +19,7 @@ interface IMenuLink {
 
 const NavBar = ({ height, index = false }: NavBarProps) => {
   const theme = useTheme()
-
-  console.log(theme)
+  const location = useLocation()
 
   const data = useStaticQuery(graphql`
     query {
@@ -44,7 +44,7 @@ const NavBar = ({ height, index = false }: NavBarProps) => {
         </FlexDiv>
         <FlexDiv>
             {menuLinks.map((e: IMenuLink) => (
-                <MenuBtn key={e?.name} theme={theme} >
+                <MenuBtn key={e?.name} theme={theme} style={{ color: location.pathname.slice(0, -1) === e.link ? theme.themeColorset.pointColor : theme.themeColorset.textColor }}>
                   <a href={e?.link}>
                   {e?.name}
                   </a>

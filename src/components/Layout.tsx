@@ -5,7 +5,6 @@ import styled from '@emotion/styled'
 import tw from 'twin.macro'
 import { ThemeProvider } from '@/context/ThemeContext.tsx'
 import { useTheme } from '@/context/ThemeContext'
-import { IThemeType } from '../context/ThemeContext'
 
 export interface LayoutProps {
   children: React.ReactNode
@@ -16,18 +15,17 @@ const Layout = ({ children, index }: LayoutProps) => {
   const theme = useTheme()
 
   return (<ThemeProvider>
-    <div className={theme.themeMode}>
-    <NavBar height="80px" index={index}></NavBar>
-        <FlexDiv>
-            <SideBarDiv>
-                <SideBar></SideBar>
-            </SideBarDiv>
-            <ContentDiv theme={theme}>
-                {theme.themeColorset.baseColor}
-                {children}
-            </ContentDiv>
-        </FlexDiv>
-    </div>
+      <div className={theme.themeMode}>
+          <NavBar height="80px" index={index}></NavBar>
+              <FlexDiv>
+                  <SideBarDiv>
+                      <SideBar></SideBar>
+                  </SideBarDiv>
+                  <ContentDiv>
+                      {children}
+                  </ContentDiv>
+              </FlexDiv>
+          </div>
     </ThemeProvider>)
 }
 
@@ -42,9 +40,6 @@ const SideBarDiv = styled.div([
   'width: 100px'
 ])
 
-const ContentDiv = styled.div((props: { theme: IThemeType }) => [
-  tw`w-full h-[100vh]`,
-  {
-    backgroundColor: props.theme.themeColorset.baseColor
-  }
+const ContentDiv = styled.div((props) => [
+  tw`w-full h-[100vh]`
 ])
