@@ -5,7 +5,7 @@ const commonTheme = {
 
 export const lightTheme = {
   ...commonTheme,
-  baseColor: '#F4E2D8',
+  baseColor: '#ffffff',
   textColor: '#242424',
   subTextColor: '#8fa2ff',
   pTextColor: '#2b2b2b',

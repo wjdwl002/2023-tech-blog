@@ -5,6 +5,19 @@ interface propType {
   children: React.ReactNode
 }
 
+export interface IThemeType {
+  themeMode: string
+  themeColorset: {
+    baseColor: string
+    textColor: string
+    subTextColor: string
+    pTextColor: string
+    borderColor: string
+    subPointColor: string
+  }
+  toggleTheme: (arg0: string) => void
+}
+
 export const ThemeContext = createContext({
   themeMode: 'light',
   setThemeMode: (themeMode: string) => {},
@@ -12,7 +25,7 @@ export const ThemeContext = createContext({
 })
 
 export const ThemeProvider = ({ children }: propType) => {
-  const [themeMode, setThemeMode] = useState('light')
+  const [themeMode, setThemeMode] = useState('dark')
   const themeColorset = themeMode === 'light' ? lightTheme : darkTheme
 
   useEffect(() => {

@@ -4,41 +4,8 @@ import styled from '@emotion/styled'
 import tw from 'twin.macro'
 import { useStaticQuery, graphql } from 'gatsby'
 import { useTheme } from '@/context/ThemeContext'
+import { IThemeType } from '../context/ThemeContext'
 
-const NavDiv = styled.div((props) => [
-  tw`
-    h-[140px] bg-transparent
-    absolute flex justify-between
-    pr-[30px] pl-[100px]
-    `,
-  {
-    width: props.index === true ? '-webkit-fill-available' : 'calc(100% - 30px)',
-    paddingLeft: props.index === true & 0,
-    background: props.theme.bgColor,
-    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-    boxShadow: '10px 10px 20px 10px rgba(0,0,0,0.05)'
-  }
-])
-
-const FlexDiv = styled.div([
-  tw`flex gap-[10px]`
-])
-
-const MenuBtn = styled.button((props) => [
-  tw`
-  w-fit
-  bg-transparent border-none 
-  text-white text-[16px] font-bold whitespace-pre`,
-  { color: props.theme.textColor }
-])
-
-const Hr = styled.hr([
-  tw`
-    w-[calc(100vw - 450px)] absolute top-[30px]
-    border-white border-[1px] opacity-50
-    z-1
-    `
-])
 export interface NavBarProps {
   height: string
   index: boolean
@@ -70,14 +37,14 @@ const NavBar = ({ height, index = false }: NavBarProps) => {
 
   return (<NavDiv
       index={index}
-      theme={theme.themeColorset}
-      style={{ height, backgroundColor: index ? 'transparent' : '#ffffff' }}>
+      theme={theme}
+      style={{ height }}>
         <FlexDiv style={{ width: '-webkit-fill-available' }}>
             <Hr style={{ display: index ? 'relative' : 'none' }}/>
         </FlexDiv>
         <FlexDiv>
             {menuLinks.map((e: IMenuLink) => (
-                <MenuBtn key={e?.name} theme={theme.themeColorset} >
+                <MenuBtn key={e?.name} theme={theme} >
                   <a href={e?.link}>
                   {e?.name}
                   </a>
@@ -90,3 +57,36 @@ const NavBar = ({ height, index = false }: NavBarProps) => {
 }
 
 export default NavBar
+const NavDiv = styled.div((props: { theme: IThemeType, index: boolean }) => [
+  tw`
+    h-[140px] bg-transparent
+    absolute flex justify-between
+    pr-[30px] pl-[100px]
+    `,
+  {
+    width: props.index ? '-webkit-fill-available' : 'calc(100% - 30px)',
+    paddingLeft: props.index & 0,
+    backgroundColor: props.index ? 'transparent' : props.theme.themeColorset.baseColor,
+    boxShadow: '10px 10px 20px 10px rgba(0,0,0,0.05)'
+  }
+])
+
+const FlexDiv = styled.div([
+  tw`flex gap-[10px]`
+])
+
+const MenuBtn = styled.button((props: { theme: IThemeType }) => [
+  tw`
+  w-fit
+  bg-transparent border-none 
+  text-[16px] font-bold whitespace-pre`,
+  { color: props.theme.themeColorset.textColor }
+])
+
+const Hr = styled.hr([
+  tw`
+    w-[calc(100vw - 450px)] absolute top-[30px]
+    border-white border-[1px] opacity-50
+    z-1
+    `
+])

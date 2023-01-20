@@ -7,6 +7,18 @@ body{
     margin: 0px;
 }
 
+.dark{
+  a:hover{
+    color: #BA5370 !important;
+  }
+}
+
+.light{
+  a:hover{
+    color: #BA5370;
+  }
+}
+
 a{
   text-decoration: none;
   color: inherit;
