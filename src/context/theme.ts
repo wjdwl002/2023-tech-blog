@@ -16,6 +16,7 @@ export const lightTheme = {
 export const darkTheme = {
   ...commonTheme,
   baseColor: '#1E1F21',
+  bgColor: '#262628',
   textColor: '#e8eaed',
   subTextColor: '#9e9e9e',
   pTextColor: '#cccccc',

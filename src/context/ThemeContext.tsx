@@ -19,7 +19,7 @@ export interface IThemeType {
 }
 
 export const ThemeContext = createContext({
-  themeMode: 'light',
+  themeMode: 'dark',
   setThemeMode: (themeMode: string) => {},
   themeColorset: {}
 })

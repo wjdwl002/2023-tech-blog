@@ -34,7 +34,7 @@ const SideDiv = styled.div((props: { theme: IThemeType }) => [
     flex flex-col justify-end
     `,
   {
-    boxShadow: '10px 10px 20px 10px rgba(0,0,0,0.05)',
+    boxShadow: `10px 10px 20px 10px ${props.theme.themeMode === 'dark' ? 'rgba(50,50,50,0.05)' : 'rgba(0,0,0,0.05)'}`,
     backgroundColor: props.theme.themeColorset.baseColor,
     color: props.theme.themeColorset.textColor
   }

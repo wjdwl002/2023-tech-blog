@@ -76,14 +76,14 @@ export default NavBar
 const NavDiv = styled.div((props: { theme: IThemeType, index: boolean }) => [
   tw`
     h-[140px] bg-transparent
-    absolute flex justify-between
-    pr-[30px] pl-[100px]
+    flex justify-between
+    pr-[30px] pl-[100px] fixed
     `,
   {
     width: props.index ? '-webkit-fill-available' : 'calc(100% - 30px)',
     paddingLeft: props.index & 0,
     backgroundColor: props.index ? 'transparent' : props.theme.themeColorset.baseColor,
-    boxShadow: '10px 10px 20px 10px rgba(0,0,0,0.05)'
+    boxShadow: `10px 10px 20px 10px ${props.theme.themeMode === 'dark' ? 'rgba(80,80,80,0.05)' : 'rgba(0,0,0,0.05)'}`
   }
 ])
 

@@ -3,6 +3,7 @@ $--light-base: #ffffff;
 $--light-text: #242424;
 $--light-subText: #8fa2ff;
 $--dark-base: #1E1F21;
+$--dark-bg: #1f2022;
 $--dark-text: #e8eaed;
 
 html{
@@ -19,7 +20,7 @@ body{
     color: var($--comm-point) !important;
   }
   section{
-    background-color: $--dark-base;
+    background-color: $--dark-bg;
   }
 }
 
