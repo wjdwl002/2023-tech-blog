@@ -13,6 +13,7 @@ export interface IThemeType {
     subTextColor: string
     pTextColor: string
     borderColor: string
+    pointColor: string
     subPointColor: string
   }
   toggleTheme: (arg0: string) => void

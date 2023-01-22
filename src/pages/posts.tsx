@@ -3,6 +3,7 @@ import { graphql, PageProps, useStaticQuery } from 'gatsby'
 import Layout from '@/components/Layout'
 import tw from 'twin.macro'
 import styled from '@emotion/styled'
+import { PostContainer } from '../components/posts/Post'
 
 const Posts: React.FC<PageProps> = () => {
   const data = useStaticQuery(graphql`
@@ -13,6 +14,13 @@ const Posts: React.FC<PageProps> = () => {
           id
           title
           createdAt
+          properties{
+            Tags{
+              value {
+                name
+              }
+            }
+          }
         }
       }
     }
@@ -33,12 +41,7 @@ const Posts: React.FC<PageProps> = () => {
           <PostsContainer>
             <hr/>
             {edges.map((node: any) =>
-              <PostDiv key={node.node.id}>
-                <PostTitle>
-                {node.node.title}
-                </PostTitle>
-                <hr/>
-              </PostDiv>
+              <PostContainer key={node.node.id} node={node.node}/>
             )}
           </PostsContainer>
         </FlexDiv>
@@ -63,14 +66,4 @@ const FlexDiv = styled.div([tw`
 
 const PostsContainer = tw.div`
 mt-[40px]
-`
-
-const PostDiv = tw.div`
-my-[40px]
-
-`
-
-const PostTitle = tw.div`
-text-[1.2rem] text-left  font-bold
-mb-[40px]
 `
