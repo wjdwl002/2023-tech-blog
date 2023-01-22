@@ -1,14 +1,10 @@
 import React from 'react'
-import tw from 'twin.macro'
+import { StyledTitle } from '@/components/styled/Title'
 
 const AboutMe = () => {
   return <div>
-        <Title>ABOUT ME</Title>
+        <StyledTitle title="ABOUT ME"></StyledTitle>
     </div>
 }
 
 export default AboutMe
-
-const Title = tw.div`
-text-[1.4rem] font-bold
-`
