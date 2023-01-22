@@ -43,6 +43,6 @@ const SideDiv = styled.div((props: { theme: IThemeType }) => [
 const FlexDiv = styled.div([
   tw`
     w-full h-fit py-[40px] 
-    flex flex-col gap-[40px] items-center
+    flex flex-col gap-[2rem] items-center
     `
 ])

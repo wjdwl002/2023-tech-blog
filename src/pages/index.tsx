@@ -57,7 +57,7 @@ const Gradient = styled.div([
 const MainDiv = styled.div([
   tw`
   fixed z-[1]
-  w-[80%] h-[60%] top-[40%] ml-[100px] 
+  w-[calc(100%-100px)] h-[60%] left-0 top-[40%] ml-[100px] pl-[10%]
   text-[2.5rem] text-left text-white font-bold
   flex flex-col justify-around
   `
@@ -66,7 +66,7 @@ const MainDiv = styled.div([
 const Section = styled.section((props: { theme: IThemeType }) => [
   tw`
   relative w-[cal(100%-100px)] h-fit
-  py-[80px] ml-[100px] pl-[100px]
+  py-[80px] ml-[100px] pl-[10%]
   z-[10]
   `,
   {
