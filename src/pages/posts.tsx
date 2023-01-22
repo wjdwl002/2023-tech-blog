@@ -1,14 +1,47 @@
 import React from 'react'
-import type { PageProps } from 'gatsby'
+import { graphql, PageProps, useStaticQuery } from 'gatsby'
 import Layout from '@/components/Layout'
 import tw from 'twin.macro'
 import styled from '@emotion/styled'
 
 const Posts: React.FC<PageProps> = () => {
+  const data = useStaticQuery(graphql`
+  query {
+    allNotion {
+      edges {
+        node {
+          id
+          title
+          createdAt
+        }
+      }
+    }
+  }
+  `)
+
+  console.log(data)
+  const { allNotion } = data
+  const { edges } = allNotion
+
   return (
     <Layout>
       <MainDiv>
-        <div></div>
+        <FlexDiv>
+          <h2>
+            POSTS
+          </h2>
+          <PostsContainer>
+            <hr/>
+            {edges.map((node: any) =>
+              <PostDiv key={node.node.id}>
+                <PostTitle>
+                {node.node.title}
+                </PostTitle>
+                <hr/>
+              </PostDiv>
+            )}
+          </PostsContainer>
+        </FlexDiv>
       </MainDiv>
     </Layout>
   )
@@ -18,7 +51,26 @@ export default Posts
 
 const MainDiv = styled.div([
   tw`
-  w-[50%] h-[20%] 
-  text-[80px] text-left text-white font-bold
+  ml-[100px] mt-[80px]
+  flex justify-center
   `
 ])
+
+const FlexDiv = styled.div([tw`
+  w-[80%] mt-[40px]
+  text-center
+`])
+
+const PostsContainer = tw.div`
+mt-[40px]
+`
+
+const PostDiv = tw.div`
+my-[40px]
+
+`
+
+const PostTitle = tw.div`
+text-[1.2rem] text-left  font-bold
+mb-[40px]
+`
