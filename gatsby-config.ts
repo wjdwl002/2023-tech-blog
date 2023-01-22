@@ -34,6 +34,7 @@ const config: GatsbyConfig = {
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-emotion',
       options: {
