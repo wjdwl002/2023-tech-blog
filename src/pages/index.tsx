@@ -19,8 +19,11 @@ const IndexPage: React.FC<PageProps> = () => {
               HI !<br/>
               I AM A WEB DEVELOPER,<br/>
               JOUNG JIWON
-              <DescDiv>
+              <DescDiv style={{ marginTop: '30px' }}>
                 사용자의 경험을 생각하는 프론트엔드 개발자입니다.
+              </DescDiv>
+              <DescDiv>
+                Frontend developer, always paying attention to a great user experience.
               </DescDiv>
             </div>
             <ContactDiv>
@@ -72,8 +75,9 @@ const Section = styled.section((props: { theme: IThemeType }) => [
   }
 ])
 
-const DescDiv = tw.p`
-text-[0.9rem] font-normal
+const DescDiv = tw.div`
+text-[0.8rem] font-normal
+mt-[5px]
 `
 
 const ContactDiv = tw.div`

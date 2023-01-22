@@ -95,7 +95,7 @@ const MenuBtn = styled.button((props: { theme: IThemeType }) => [
   tw`
   w-fit
   bg-transparent border-none 
-  text-[16px] font-bold whitespace-pre`
+  text-[14px] font-bold whitespace-pre`
 ])
 
 // const Hr = styled.hr([
