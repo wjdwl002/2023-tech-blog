@@ -21,7 +21,7 @@ const config: GatsbyConfig = {
       },
       {
         name: 'PROJECTS',
-        link: 'projects'
+        link: '/projects'
       },
       {
         name: 'POSTS',
@@ -75,7 +75,14 @@ const config: GatsbyConfig = {
         lowerTitleLevel: true
       }
     },
-    { resolve: 'gatsby-transformer-remark' }
+    { resolve: 'gatsby-transformer-remark' },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'docs',
+        path: path.resolve(__dirname, 'src/content')
+      }
+    }
   ]
 }
 
