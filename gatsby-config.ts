@@ -74,7 +74,8 @@ const config: GatsbyConfig = {
         propsToFrontmatter: true,
         lowerTitleLevel: true
       }
-    }
+    },
+    { resolve: 'gatsby-transformer-remark' }
   ]
 }
 
