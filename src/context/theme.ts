@@ -21,5 +21,5 @@ export const darkTheme = {
   subTextColor: '#9e9e9e',
   pTextColor: '#cccccc',
   borderColor: '',
-  subPointColor: '#1E1F21'
+  subPointColor: '#2b2c2e'
 }

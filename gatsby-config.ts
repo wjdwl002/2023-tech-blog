@@ -21,7 +21,7 @@ const config: GatsbyConfig = {
       },
       {
         name: 'PROJECTS',
-        link: 'projects'
+        link: '/projects'
       },
       {
         name: 'POSTS',
@@ -29,14 +29,12 @@ const config: GatsbyConfig = {
       }
     ]
   },
-  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
-  // If you use VSCode you can also use the GraphQL plugin
-  // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-emotion',
       options: {
@@ -65,7 +63,24 @@ const config: GatsbyConfig = {
         extensions: ['js', 'jsx', 'ts', 'tsx'],
         exclude: ['node_modules', 'bower_components', '.cache', 'public']
         // Any additional eslint-webpack-plugin options below
-        // ...
+        // …
+      }
+    },
+    {
+      resolve: 'gatsby-source-notion-api',
+      options: {
+        token: 'secret_AS07AQ7hON2NDBnrG7dWNR5NQOo7m73IGljQEy4DgvA',
+        databaseId: '6b43ee0378c14b7f961504cf0a290fe6',
+        propsToFrontmatter: true,
+        lowerTitleLevel: true
+      }
+    },
+    { resolve: 'gatsby-transformer-remark' },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'docs',
+        path: path.resolve(__dirname, 'src/content')
       }
     }
   ]

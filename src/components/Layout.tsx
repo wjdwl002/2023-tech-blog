@@ -41,5 +41,5 @@ const SideBarDiv = styled.div([
 ])
 
 const ContentDiv = styled.section([
-  tw`w-full h-[100vh]`
+  tw`w-full min-h-[100vh] h-[100%]`
 ])

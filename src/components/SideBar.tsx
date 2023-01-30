@@ -7,6 +7,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import { useTheme } from '@/context/ThemeContext'
 import { IThemeType } from '../context/ThemeContext'
+import ArchiveIcon from '@mui/icons-material/Archive'
 
 const SideBar = () => {
   const theme = useTheme()
@@ -21,6 +22,9 @@ const SideBar = () => {
       </a>
       <a href="https://github.com/wjdwl002">
         <GitHubIcon/>
+      </a>
+      <a href="https://www.notion.so/WELCOME-68b95d05b15348ceb2e08605422df8d8">
+        <ArchiveIcon/>
       </a>
     </FlexDiv>
     </SideDiv>)
@@ -43,6 +47,6 @@ const SideDiv = styled.div((props: { theme: IThemeType }) => [
 const FlexDiv = styled.div([
   tw`
     w-full h-fit py-[40px] 
-    flex flex-col gap-[40px] items-center
+    flex flex-col gap-[2rem] items-center
     `
 ])

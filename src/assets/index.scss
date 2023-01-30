@@ -1,4 +1,5 @@
 $--comm-point: #BA5370;
+$--comm-border: rgba(110,110,110,0.5);
 $--light-base: #ffffff;
 $--light-text: #242424;
 $--light-subText: #8fa2ff;
@@ -7,7 +8,6 @@ $--dark-bg: #1f2022;
 $--dark-text: #e8eaed;
 
 html{
-    min-width: 1200px !important;
     overflow-x: auto;
 }
 
@@ -21,6 +21,7 @@ body{
   }
   section{
     background-color: $--dark-bg;
+    color: $--dark-text
   }
 }
 
@@ -30,7 +31,23 @@ body{
   }
   section{
     background-color: $--light-base;
+    color: $--light-text
   }
+}
+
+h1{
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2{
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+hr{
+  border-color: $--comm-border;
+  border-width: 0.5px;
 }
 
 a{
