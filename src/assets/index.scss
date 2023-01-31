@@ -15,6 +15,16 @@ body{
     margin: 0px;
 }
 
+@counter-style custom-ordered {
+  system: cyclic;
+  symbols: '❣';
+  suffix: ' ';
+}
+
+li,ol{
+  list-style-type: custom-ordered;
+}
+
 .dark{
   a:hover{
     color: $--comm-point !important;

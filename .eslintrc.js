@@ -21,6 +21,7 @@ module.exports = {
     // 'no-anonymous-exports-page-templates': 'warn',
     // 'limited-exports-page-templates': 'warn',
     '@typescript-eslint/ban-tsx-comment': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn'
   }
 }

@@ -1,0 +1,49 @@
+{
+  "Introduction": {
+    "title": "",
+    "content": [
+      "배우고 싶은것, "
+    ]
+  },
+
+  "Study": {
+    "title": "Study",
+    "color": "default",
+    "content": [
+      "KyungHwa Girls' High School(2015-2018)",
+      "Sunway International School in Malaysia(2016)",
+      "KyungHee University, Computer Science Major(2019-)"
+    ]
+  },
+
+  "Languages": {
+    "title": "Languages",
+    "content": [
+      "Korean - Native",
+      "English - Working Proficiency"
+    ]
+  },
+
+  "Tech": {
+    "title": "Tech",
+    "color": "default",
+    "subTitle": {
+      "Experienced": {
+        "content": [
+          [ "C++", "Python", "JavaScript", "TypeScript"],
+          [ "React","Vue2", "Nuxt.js"],
+          [ "Linux" ]
+        ]
+      },
+      "Familiar": {
+        "content": [
+          ["C"],
+          ["Next.js", "Vue3"],
+          ["Node.js", "express", "Django"],
+          ["MySQL", "MongoDB", "graphQL"],
+          ["docker", "kubernetes", "aws", "ansible" ,"vagrant"]
+        ]
+      }
+    }
+  }
+}
