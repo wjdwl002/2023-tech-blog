@@ -1,8 +1,10 @@
 {
   "Introduction": {
-    "title": "",
+    "title": "✨ WORK HARD, DEBUG HARD ✨",
     "content": [
-      "배우고 싶은것, "
+      "Maximalism Developer, driven by many interests and motivations. Open to explore whatever makes me stronger.",
+      "Hard Working, Flexible, Enthusiastic. These are three words explaning myself.",
+      "Enjoy my blog!"
     ]
   },
 
@@ -28,17 +30,19 @@
     "title": "Tech",
     "color": "default",
     "subTitle": {
-      "Experienced": {
+      "Skilled": {
         "content": [
+          [ "Linux" ],
           [ "C++", "Python", "JavaScript", "TypeScript"],
           [ "React","Vue2", "Nuxt.js"],
-          [ "Linux" ]
+          [ "recoil" ]
         ]
       },
-      "Familiar": {
+      "Experienced": {
         "content": [
-          ["C"],
+          ["C", "System Programming"],
           ["Next.js", "Vue3"],
+          ["pinia", "redux"],
           ["Node.js", "express", "Django"],
           ["MySQL", "MongoDB", "graphQL"],
           ["docker", "kubernetes", "aws", "ansible" ,"vagrant"]

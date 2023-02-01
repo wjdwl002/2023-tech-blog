@@ -7,6 +7,7 @@ import styled from '@emotion/styled'
 const profile = 'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a47fbb51-feb6-4bc5-8481-8818cceec571/KakaoTalk_Image_2022-06-30-14-24-30.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230131%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230131T073422Z&X-Amz-Expires=86400&X-Amz-Signature=17fa4c2b71f2c9cbf816e6322a4e144d1d06c88266ee9f2f0d4b35aa1aa574fd&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22KakaoTalk_Image_2022-06-30-14-24-30.png%22&x-id=GetObject'
 
 const AboutMe = () => {
+  const IntroContent = JsonData.Introduction
   const StudyContent = JsonData.Study
   const LangContent = JsonData.Languages
   const TechContent = JsonData.Tech
@@ -17,9 +18,16 @@ const AboutMe = () => {
         <StyledTitle title="ABOUT ME"></StyledTitle>
         <FlexDiv1>
           <div style={{ width: '40%' }}>
-            <img src={profile} style={{ width: '300px', height: '300px' }}/>
-            {/* <hr></hr>
-            <hr></hr> */}
+            <div>
+              <img src={profile} style={{ width: '300px', height: '300px' }}/>
+            </div>
+
+            <hr/>
+            <IntroDiv>
+              <IntroTitle>{IntroContent.title}</IntroTitle>
+              {IntroContent.content.map((e: string, idx: number) => (<div key={idx}>{e}</div>))}
+            </IntroDiv>
+            <hr/>
           </div>
 
           <FlexDiv2>
@@ -48,7 +56,7 @@ const AboutMe = () => {
                 <TitleDiv>{TechContent.title}</TitleDiv>
                 <FlexDiv3>
                   {Object.entries(TechContent.subTitle).map(([title, value], idx) => (
-                    <div key={idx} style={{ width: '50%' }}>
+                    <div key={idx} style={{ width: '48%' }}>
                       <SubTitleDiv>{title}</SubTitleDiv>
                       <div>
                         { value.content.map((e: string[], idx: number) => {
@@ -72,7 +80,7 @@ const AboutMe = () => {
 
 const FlexDiv1 = tw.div`
 w-[100%] max-w-[1200px] 
-flex gap-[30px]
+flex gap-[30px] justify-between
 
 `
 
@@ -85,9 +93,18 @@ const FlexDiv3 = tw.div`
 w-full flex justify-between
 `
 
-const Hr = tw.div`
-w-[1px]
-bg-[rgba(255,255,255,0.2)]
+const Hr = styled.hr([
+  tw`h-[1px] my-[5px]`,
+  { background: 'linear-gradient(-45deg, #fffaf8, #BA5370, #9796f0, #23d5ab)' }
+])
+
+const IntroDiv = tw.div`
+my-[20px] px-[10px] leading-6 text-[0.9rem]
+`
+
+const IntroTitle = tw.div`
+text-[1.4rem] font-bold text-center
+mb-[10px]
 `
 
 const TitleDiv = styled.div([

@@ -66,7 +66,7 @@ const MainDiv = styled.div([
 const Section = styled.section((props: { theme: IThemeType }) => [
   tw`
   relative w-[cal(100%-100px)] h-fit
-  py-[80px] ml-[100px] pl-[80px]
+  p-[80px] ml-[100px]
   z-[10]
   `,
   {
