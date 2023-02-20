@@ -6,5 +6,5 @@ export const slugify = (text: string) =>
     .toLowerCase()
     .trim()
     .replace(/\s+/g, '-')
-    .replace(/[^\w-]+/g, '')
+    // .replace(/[^\w-]+/g, '')
     .replace(/--+/g, '-')
