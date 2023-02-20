@@ -3,19 +3,9 @@ import React from 'react'
 import tw from 'twin.macro'
 import { useTheme, IThemeType } from '@/context/ThemeContext'
 import { toStringByFormatting } from '@/utils/date'
+import { INotionType } from '@/pages/posts'
 
-interface INodeType {
-  id: string
-  title: string
-  createdAt: string
-  properties: {
-    Tags: {
-      value: any[]
-    }
-  }
-}
-
-export const PostContainer = (post: { node: INodeType }) => {
+export const PostContainer = (post: { node: INotionType }) => {
   const theme = useTheme()
   const { node } = post
   console.log(node)

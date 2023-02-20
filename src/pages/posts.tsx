@@ -1,22 +1,45 @@
 import React from 'react'
-import { graphql, PageProps, useStaticQuery } from 'gatsby'
+import { graphql, PageProps, useStaticQuery, Link } from 'gatsby'
 import Layout from '@/components/Layout'
 import tw from 'twin.macro'
 import styled from '@emotion/styled'
 import { PostContainer } from '../components/posts/Post'
+import { slugify } from '../utils/slugify'
+interface INotionType {
+  node: {
+    id: string
+    title: string
+    createdAt: string
+    properties: {
+      Tags: {
+        value: {
+          name: any[]
+        }
+      }
+    }
+  }
+}
 
 const Posts: React.FC<PageProps> = () => {
   const data = useStaticQuery(graphql`
-  query {
-    allNotion {
-      edges {
-        node {
+  query{
+    allNotion(sort:{
+      createdAt:DESC
+    }, filter: {
+      properties:{
+        Status:{
+          value:{
+            name:{
+              eq:"Done"
+            }}}}}){
+      edges{
+        node{
           id
           title
           createdAt
           properties{
             Tags{
-              value {
+              value{
                 name
               }
             }
@@ -40,8 +63,10 @@ const Posts: React.FC<PageProps> = () => {
           </h2>
           <PostsContainer>
             <hr/>
-            {edges.map((node: any) =>
-              <PostContainer key={node.node.id} node={node.node}/>
+            {edges.map((node: INotionType) =>
+              <Link to={`post/${slugify(node.node.title)}`} key={node.node.id} >
+                <PostContainer node={node.node}/>
+              </Link>
             )}
           </PostsContainer>
         </FlexDiv>
