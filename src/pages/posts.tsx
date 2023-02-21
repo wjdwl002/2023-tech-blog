@@ -37,6 +37,7 @@ const Posts: React.FC<PageProps> = () => {
           id
           title
           createdAt
+          markdownString
           properties{
             Tags{
               value{
