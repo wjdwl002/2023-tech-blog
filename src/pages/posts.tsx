@@ -79,7 +79,6 @@ export default Posts
 
 const MainDiv = styled.div([
   tw`
-  ml-[100px] mt-[80px]
   flex justify-center
   `
 ])
