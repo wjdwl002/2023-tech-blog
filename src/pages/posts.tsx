@@ -64,7 +64,7 @@ const Posts: React.FC<PageProps> = () => {
           <PostsContainer>
             <hr/>
             {edges.map((node: INotionType) =>
-              <Link to={`post/${slugify(node.node.title)}`} key={node.node.id} >
+              <Link to={`/post/${slugify(node.node.title)}`} key={node.node.id} >
                 <PostContainer node={node.node}/>
               </Link>
             )}

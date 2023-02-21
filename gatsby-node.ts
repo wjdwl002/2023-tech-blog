@@ -1,46 +1,42 @@
 import { INotionType } from '@/pages/posts'
-import { useStaticQuery, graphql, Reporter } from 'gatsby'
+import { useStaticQuery, Reporter } from 'gatsby'
 import path, { resolve } from 'path'
 
 // types generated from a code generator such as `gatsby-plugin-graphql-codegen`
 import type { BlogsQuery } from '@graphql'
-import { slugify } from '@/src/utils/slugify'
+import { slugify } from './src/utils/slugify'
 
-exports.sourceNodes = async ({
+exports.createPages = async ({
+  graphql,
   actions: { createNode, createPage }
 }) => {
-  const data = await useStaticQuery(graphql`
-  query{
-    allNotion(sort:{
-      createdAt:DESC
-    }){
-      edges{
-        node{
-          id
-          title
-          createdAt
-          markdownString
-          properties{
-            Tags{
-              value{
-                name
+  const allPostQuery = await graphql(`
+    {
+      allNotion(
+        sort: {
+          createdAt: DESC
+        }
+      ) {
+        edges{
+          node{
+            id
+            title
+            createdAt
+            markdownString
+            properties{
+              Tags{
+                value{
+                  name
+                }
               }
             }
           }
         }
       }
     }
-  }
   `)
 
-  const { allNotion } = data
-  const { edges } = allNotion
-  const postsData = edges.map((e: INotionType) => {
-    e.slug = slugify(e.title)
-
-    return e
-  })
-
+  const { edges: posts } = allPostQuery.data.allNotion
   const PostTemplateComponent = path.resolve(
     __dirname,
     'src/pages/posts/post_template.tsx'
@@ -48,11 +44,11 @@ exports.sourceNodes = async ({
 
   const generatePostPage = ({
     node: {
-      id, title, createAt, markdownString, properties, slug
+      id, title, createAt, markdownString, properties
     }
   }: { node: INotionType }) => {
     const pageOptions = {
-      path: slug,
+      path: path.join('/post/', slugify(title)),
       component: PostTemplateComponent,
       context: {
         id,
@@ -66,5 +62,5 @@ exports.sourceNodes = async ({
     createPage(pageOptions)
   }
 
-  postsData.forEach(generatePostPage)
+  posts.forEach(generatePostPage)
 }
