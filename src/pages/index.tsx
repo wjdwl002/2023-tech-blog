@@ -50,7 +50,8 @@ export const Head: HeadFC = () => <title>Home Page</title>
 
 const Gradient = styled.div([
   tw`
-  w-[calc(100%-100px)] h-[100vh] ml-[100px]
+  w-full h-[100vh]
+  relative
   flex justify-center items-center p-0 m-0`
 ])
 
@@ -66,7 +67,7 @@ const MainDiv = styled.div([
 const Section = styled.section((props: { theme: IThemeType }) => [
   tw`
   relative w-[cal(100%-100px)] h-fit
-  p-[80px] ml-[100px]
+  p-[80px]
   z-[10]
   `,
   {

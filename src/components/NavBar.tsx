@@ -76,7 +76,7 @@ export default NavBar
 const NavDiv = styled.div((props: { theme: IThemeType, index: boolean }) => [
   tw`
     h-[140px] bg-transparent
-    flex justify-between
+    flex justify-between z-10
     pr-[30px] pl-[100px] fixed
     `,
   {

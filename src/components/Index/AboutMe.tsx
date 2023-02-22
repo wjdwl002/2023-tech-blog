@@ -3,8 +3,9 @@ import { StyledTitle } from '@/components/styled/Title'
 import tw from 'twin.macro'
 import JsonData from '@/content/Index/About-Me-Content.json'
 import styled from '@emotion/styled'
+import { graphql, useStaticQuery } from 'gatsby'
 
-const profile = 'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a47fbb51-feb6-4bc5-8481-8818cceec571/KakaoTalk_Image_2022-06-30-14-24-30.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230131%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230131T073422Z&X-Amz-Expires=86400&X-Amz-Signature=17fa4c2b71f2c9cbf816e6322a4e144d1d06c88266ee9f2f0d4b35aa1aa574fd&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22KakaoTalk_Image_2022-06-30-14-24-30.png%22&x-id=GetObject'
+const profile = '/src/assets/me.png'
 
 const AboutMe = () => {
   const IntroContent = JsonData.Introduction
@@ -12,20 +13,30 @@ const AboutMe = () => {
   const LangContent = JsonData.Languages
   const TechContent = JsonData.Tech
 
-  console.log(StudyContent)
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "assets/me.png" }) {
+        childImageSharp {
+          fixed(width: 400, height: 400) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
 
   return <div>
         <StyledTitle title="ABOUT ME"></StyledTitle>
         <FlexDiv1>
           <div style={{ width: '40%' }}>
             <div>
-              <img src={profile} style={{ width: '300px', height: '300px' }}/>
+              <img src="src/components/Index/me.png" style={{ width: '300px', height: '300px' }}/>
             </div>
 
             <hr/>
             <IntroDiv>
               <IntroTitle>{IntroContent.title}</IntroTitle>
-              {IntroContent.content.map((e: string, idx: number) => (<div key={idx}>{e}</div>))}
+              {IntroContent.content.map((e: string, idx: number) => (<div key={`intro-${idx}`}>{e}</div>))}
             </IntroDiv>
             <hr/>
           </div>
@@ -35,7 +46,7 @@ const AboutMe = () => {
               <div>
                 <TitleDiv>{StudyContent.title}</TitleDiv>
                 <div>
-                  {StudyContent.content.map((e: string, idx: number) => (<ContentLi key={idx}>
+                  {StudyContent.content.map((e: string, idx: number) => (<ContentLi key={`study-${idx}`}>
                     {e}
                   </ContentLi>))}
                 </div>
@@ -45,7 +56,7 @@ const AboutMe = () => {
               <div>
                 <TitleDiv>{LangContent.title}</TitleDiv>
                 <div>
-                  {LangContent.content.map((e: string, idx: number) => <ContentLi key={idx}>
+                  {LangContent.content.map((e: string, idx: number) => <ContentLi key={`language-${idx}`}>
                     {e}
                   </ContentLi>)}
                 </div>
@@ -56,13 +67,13 @@ const AboutMe = () => {
                 <TitleDiv>{TechContent.title}</TitleDiv>
                 <FlexDiv3>
                   {Object.entries(TechContent.subTitle).map(([title, value], idx) => (
-                    <div key={idx} style={{ width: '48%' }}>
+                    <div key={`techCategory-${idx}`} style={{ width: '48%' }}>
                       <SubTitleDiv>{title}</SubTitleDiv>
                       <div>
                         { value.content.map((e: string[], idx: number) => {
-                          return (<div style={{ marginTop: '12px' }} key={idx}>{
+                          return (<div style={{ marginTop: '12px' }} key={`techSubCategory-${idx}`}>{
                             e.map((str: string) => (
-                              <img style={{ borderRadius: '4px', height: '24px', marginRight: '4px' }} key={idx} src={`https://img.shields.io/badge/${str}-D8D9CF?style=for-the-badge&logo=${str}&logoColor=black`}/>))
+                              <img style={{ borderRadius: '4px', height: '24px', marginRight: '4px' }} key={`tech-${str}-${idx}`} src={`https://img.shields.io/badge/${str}-D8D9CF?style=for-the-badge&logo=${str}&logoColor=black`}/>))
                             }
                          </div>
 
