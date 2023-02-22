@@ -51,7 +51,7 @@ export const Head: HeadFC = () => <title>Home Page</title>
 const Gradient = styled.div([
   tw`
   w-full h-[100vh]
-  relative
+  relative top-[-80px]
   flex justify-center items-center p-0 m-0`
 ])
 
